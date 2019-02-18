@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.shooter.RunIntake;
 import frc.robot.commands.shooter.RunShooter;
+import frc.robot.commands.solenoids.InstantSolenoid;
 
 public class OI {
   public static Joystick driver, operator;
@@ -26,6 +27,9 @@ public class OI {
     driverB.whileHeld(new RunShooter(.5));
     driverA.whenPressed(new RunIntake(true));
     driverA.whenReleased(new RunIntake(false));
+
+    operatorA.whenPressed(new InstantSolenoid(false));
+    operatorA.whenReleased(new InstantSolenoid(true));
   }
 
   private void init() {
